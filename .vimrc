@@ -11,6 +11,7 @@ endif
 colorscheme jellybeans
 
 set number                      " linenumber at start of line
+" set relativenumber              " relative numbers above and below
 set cursorline                  " highlight current line
 set ruler                       " current position at lower right
 set laststatus=2                " status line for each window
@@ -53,6 +54,12 @@ set clipboard+=unnamed          " use +-register for ydcp
 
 " Change appearance of char in :list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+,eol:$
+" set formatoptions+=j            " on joining comments remove comment-character
+
+" set sessionoptions-=curdir       " don't use current-directory for save&load of session
+" set sessionoptions+=sesdir       " use session-directory for save&load of session
+" let g:session_directory=getcwd() " set session-directory to current directory (where vim started)
+" let g:session_autosave='no'      " do not automatically save sessions
 
 set diffopt+=filler             " on diff: include filler-lines
 set diffopt+=iwhite             " on diff: ignore whitespace-changes
@@ -60,6 +67,15 @@ set diffopt+=vertical           " on diff: use vertical split
 
 set encoding=utf-8              " UTF-8 encoding for files
 set spelllang=en                " spellcheck language is englisch
+
+" set foldcolumn=2                " show line before linenumber with fold-info
+" set foldmethod=indent           " use indent as fold-indicator
+" set foldlevel=0                 " close all folds
+" " open all folds on file open
+" au BufRead * normal zR
+
+" set concealcursor=vin           " visual, insert, normal -- conceal/hide things
+" set conceallevel=2              " concealed text is concealed
 
 " on completion: show menu with options and only include longest matches
 set completeopt=menu,menuone,longest
