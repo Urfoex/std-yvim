@@ -140,4 +140,29 @@ endfunction
 " toggle mouse usage with Ctrl-m
 noremap <silent> <C-m> :call ToggleMouse()<CR>
 
+" copy selection to new tab and new buffer and go back
+function DiffOne() range
+    :'<,'>yank
+    :tabnew
+    :normal P
+    :normal gg
+    :tabprevious
+endfunction
+
+" copy selection next tab new split and diff both splits
+function DiffTwo() range
+    :'<,'>yank
+    :tabnext
+    :diffthis
+    :vnew
+    :normal P
+    :diffthis
+    :normal gg
+endfunction
+
+" select first part for diff
+vnoremap <leader>d1 :call DiffOne()<CR>
+" select second part for diff and make diff
+vnoremap <leader>d2 :call DiffTwo()<CR>
+
 " vim:set ft=vim et sw=2:
