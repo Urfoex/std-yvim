@@ -126,5 +126,18 @@ nmap <silent> <leader>F :e!<CR>G:sleep 500m<CR><leader>F
 
 set nottimeout                  " do not timeout on key sequence insertion
 
+" toggle mouse usage
+function ToggleMouse()
+    if &mouse == 'a'
+        :set mouse=
+        :echo 'Mouse off'
+    else
+        :set mouse=a
+        :echo 'Mouse on'
+    endif
+endfunction
+
+" toggle mouse usage with Ctrl-m
+noremap <silent> <C-m> :call ToggleMouse()<CR>
 
 " vim:set ft=vim et sw=2:
