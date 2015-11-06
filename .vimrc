@@ -7,8 +7,7 @@ if has('mouse')
     set mouse=a
 endif
 
-" colorscheme codeschool
-colorscheme jellybeans
+colorscheme molokai
 
 set number                      " linenumber at start of line
 " set relativenumber              " relative numbers above and below
