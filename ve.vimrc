@@ -7,6 +7,9 @@ if has('mouse')
     set mouse=a
 endif
 
+" colorscheme codeschool
+" colorscheme jellybeans
+" colorscheme clearance
 colorscheme molokai
 
 set number                      " linenumber at start of line
@@ -125,22 +128,36 @@ nmap <silent> <leader>F :e!<CR>G:sleep 500m<CR><leader>F
 
 set nottimeout                  " do not timeout on key sequence insertion
 
+
 " toggle mouse usage
-function ToggleMouse()
+function! ToggleMouse()
     if &mouse == 'a'
-        :set mouse=
+        :silent! setlocal mouse=
+        :silent! setlocal nonumber
+        :silent! setlocal syntax=off
         :echo 'Mouse off'
     else
-        :set mouse=a
+        :silent! setlocal mouse=a
+        :silent! setlocal number
+        :silent! setlocal syntax=on
         :echo 'Mouse on'
     endif
 endfunction
+
+syntax off
+syntax manual
+set mouse=
+set nonumber
+set syntax=off
+setlocal mouse=
+setlocal nonumber
+setlocal syntax=off
 
 " toggle mouse usage with Ctrl-m
 noremap <silent> <C-m> :call ToggleMouse()<CR>
 
 " copy selection to new tab and new buffer and go back
-function DiffOne() range
+function! DiffOne() range
     :'<,'>yank
     :tabnew
     :normal P
@@ -149,7 +166,7 @@ function DiffOne() range
 endfunction
 
 " copy selection next tab new split and diff both splits
-function DiffTwo() range
+function! DiffTwo() range
     :'<,'>yank
     :tabnext
     :diffthis
@@ -159,9 +176,24 @@ function DiffTwo() range
     :normal gg
 endfunction
 
+
+function! InstallColorScheme()
+    :!wget https://bitbucket.org/Urfoex/std-yvim/raw/4b8b19ddba09a306489d6cd188b75ce193c28dde/colors/molokai.vim -x -O ~/.vim/colors/molokai.vim
+    :echo 'molokai installed'
+endfunction
+
+
 " select first part for diff
 vnoremap <leader>d1 :call DiffOne()<CR>
 " select second part for diff and make diff
 vnoremap <leader>d2 :call DiffTwo()<CR>
 
-" vim:set ft=vim et sw=2 foldmethod=marker:
+noremap <C-l> :tabnew /var/log/payment/frontend/
+
+noremap <C-n> :tabnew<CR>
+noremap <C-Right> gt
+noremap <C-Left> gT
+inoremap <C-Right> <ESC>gt
+inoremap <C-Left> <ESC>gT
+
+" vim:set ft=vim et sw=2: 
