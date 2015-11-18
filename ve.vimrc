@@ -178,9 +178,15 @@ endfunction
 
 
 function! InstallColorScheme()
-    :!wget https://bitbucket.org/Urfoex/std-yvim/raw/4b8b19ddba09a306489d6cd188b75ce193c28dde/colors/molokai.vim -x -O ~/.vim/colors/molokai.vim
-    :echo 'molokai installed'
+    if filereadable(glob("~/.vim/colors/molokai.vim"))
+        " :echo 'molokai already installed'                                                                                                                                                                                                                                   
+    else
+        :!wget https://bitbucket.org/Urfoex/std-yvim/raw/4b8b19ddba09a306489d6cd188b75ce193c28dde/colors/molokai.vim -x -O ~/.vim/colors/molokai.vim
+        :echo 'molokai installed'
+    endif
 endfunction
+
+call InstallColorScheme()
 
 
 " select first part for diff
