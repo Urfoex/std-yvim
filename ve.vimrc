@@ -202,8 +202,22 @@ noremap <C-Left> gT
 inoremap <C-Right> <ESC>gt
 inoremap <C-Left> <ESC>gT
 
-" Konsole - | for insert mode
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+function! UpdateVIMRC()
+    :!wget https://bitbucket.org/Urfoex/std-yvim/raw/default/ve.vimrc -x -O ~/.vimrc
+    :echo 'vimrc updated'
+endfunction
+
+" Do following command to update the vimrc
+" :call UpdateVIMRC()
+
+function! ChangeCursorShapes()
+    " Konsole
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endfunction
+
+" Uncomment following line to have changing cursor shapes based on mode
+" call ChangeCursorShapes()
 
 " vim:set ft=vim et sw=2:
