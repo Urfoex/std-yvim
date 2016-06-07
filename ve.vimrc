@@ -47,7 +47,7 @@ set ignorecase                  " ignore case on search
 set smartcase                   " ignore case on search  if all lower-case
 set hlsearch                    " highlight search-results
 set incsearch                   " search while inserting search-string
-" Use :nohlsearch<C-R> to clear the highlighting 
+" Use :nohlsearch<C-R> to clear the highlighting
 
 set backspace=indent,eol,start  " make backspace more usable
 set history=100                 " keep 100 lines of command line history
@@ -120,7 +120,7 @@ if !exists(":DiffOrig")
 endif
 
 " make % match more then brackets
-runtime! macros/matchit.vim     
+runtime! macros/matchit.vim
 
 " <leader> F aka \F continuously reload file and goto last line
 " nmap <silent> F :e!<CR>G:sleep 500m<CR>:redraw<CR>F
@@ -202,4 +202,8 @@ noremap <C-Left> gT
 inoremap <C-Right> <ESC>gt
 inoremap <C-Left> <ESC>gT
 
-" vim:set ft=vim et sw=2: 
+" Konsole - | for insert mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" vim:set ft=vim et sw=2:
