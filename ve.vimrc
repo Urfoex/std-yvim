@@ -204,6 +204,7 @@ inoremap <C-Left> <ESC>gT
 
 function! UpdateVIMRC()
     :!wget https://bitbucket.org/Urfoex/std-yvim/raw/default/ve.vimrc -x -O ~/.vimrc
+    :source $MYVIMRC
     :echo 'vimrc updated'
 endfunction
 
